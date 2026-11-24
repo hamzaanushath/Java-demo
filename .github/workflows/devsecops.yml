@@ -30,7 +30,7 @@ jobs:
         run: mvn verify sonar:sonar -Dsonar.projectKey=ousl-student-service || true
 
       - name: Build Container
-        run: docker build -t ousl-student-api:${{ github.sha }} .
+        run: docker build --provenance=false -t ousl-student-api:${{ github.sha }} .
 
       - name: Aqua Security Trivy Scan
         uses: aquasecurity/trivy-action@v0.36.0
